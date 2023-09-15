@@ -32,6 +32,11 @@
 			<button id="validatebutton" onclick="validate()">Validate photo</button>
 			<div id="result"></div>
 		</div>
+		<form id="user_info" onsubmit="return false;">
+			<input id="user_name" type="text" name="user_name" placeholder="UserName" required>
+			<input id="email" type="email" name="email" placeholder="Email" required>
+			<button id="sendbutton" onclick="submitForm(event)">Send photo</button>
+		</form>
 	</div>
 </body>
 

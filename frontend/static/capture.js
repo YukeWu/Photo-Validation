@@ -129,17 +129,37 @@ function validate() {
         method: 'POST',
         body: data
     })
-    .then(response => response.json())
-    .then(data => {
-        var result = document.getElementById('result');
-        result.innerHTML = "";
-        for (var i = 0; i < data.predictions.length; i++) {
-            console.log("Tag Name: " + data.predictions[i].tagName + " Probability: " + data.predictions[i].probability);
-            result.innerHTML += "Tag Name: " + data.predictions[i].tagName + " Probability: " + data.predictions[i].probability + "<br>";
+        .then(response => response.json())
+        .then(data => {
+            var result = document.getElementById('result');
+            result.innerHTML = "";
+            for (var i = 0; i < data.predictions.length; i++) {
+                console.log("Tag Name: " + data.predictions[i].tagName + " Probability: " + data.predictions[i].probability);
+                result.innerHTML += "Tag Name: " + data.predictions[i].tagName + " Probability: " + data.predictions[i].probability + "<br>";
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}
+
+// let send_button = document.getElementById('sendbutton');
+function submitForm(e) {
+    e.preventDefault();
+    takepicture();
+    let email = document.getElementById('email').value;
+    let name = document.getElementById('user_name').value;
+    let image = document.getElementById('photo').src;
+    fetch('/users', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email: email, name: name, image: image })
+    }).then(response => {
+        if(!response.ok) {
+            alert('User Add Failed');
         }
-    })
-    .catch(error => {
-        console.error('Error:', error);
     });
 }
 

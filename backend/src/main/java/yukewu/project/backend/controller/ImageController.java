@@ -1,4 +1,4 @@
-package yukewu.project.backend.service;
+package yukewu.project.backend.controller;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -22,10 +22,12 @@ import com.azure.storage.blob.BlobContainerClient;
 import com.azure.storage.blob.BlobServiceClient;
 import com.azure.storage.blob.BlobServiceClientBuilder;
 
+import yukewu.project.backend.service.CustomVision;
+
 @RestController
 @CrossOrigin(origins = "${FRONTEND_HOST:*}")
 
-public class Rest {
+public class ImageController {
     
     private static final String CONNECTION_STRING = "DefaultEndpointsProtocol=https;AccountName=cloudshell000406;AccountKey=3HJAPhlejAaCqGZK8ApzTKEyGcZDtG30yAO0hNWO8XPDnsrjp0L6K/3Oj1XDG1giGL+92dXqws8Q+AStuxP5TQ==;EndpointSuffix=core.windows.net";
 
