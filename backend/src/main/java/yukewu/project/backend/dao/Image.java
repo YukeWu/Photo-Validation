@@ -9,6 +9,10 @@ public class Image {
         this.photo = photo;
     }
 
+    public Image(){
+        
+    }
+
     public String getUserId() {
         return userId;
     }
